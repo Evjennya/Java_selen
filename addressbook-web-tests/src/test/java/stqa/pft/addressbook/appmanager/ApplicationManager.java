@@ -19,6 +19,7 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private NavgationHelper navgationHelper;
   private GroupHelper groupHelper;
+  private ContactHelper contactHelper;
   private String browser;
 
 
@@ -39,9 +40,10 @@ public class ApplicationManager {
       wd = new SafariDriver();
     }
 
-    wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(wd);
+    contactHelper = new ContactHelper(wd);
     navgationHelper = new NavgationHelper(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
@@ -55,6 +57,8 @@ public class ApplicationManager {
   public GroupHelper getGroupHelper() {
     return groupHelper;
   }
+
+  public ContactHelper getContactHelper() { return contactHelper;}
 
   public NavgationHelper getNavgationHelper() {
     return navgationHelper;
