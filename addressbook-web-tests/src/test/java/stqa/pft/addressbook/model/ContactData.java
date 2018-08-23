@@ -5,25 +5,103 @@ package stqa.pft.addressbook.model;
  */
 public class ContactData {
 
-  private final String firstname;
-  private final String secondname;
+  private int id = Integer.MAX_VALUE;
+  private String firstname;
+  private String lastname;
+  private String workPhone;
+  private String mobilePhone;
+  private String homePhone;
+  private String allPhones;
   private String group;
 
-  public ContactData(String firstname, String secondname, String group){
+
+
+
+
+
+
+  public ContactData withId(int id) {
+    this.id = id;
+    return this;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+
+  public ContactData withFirstname(String firstname) {
     this.firstname = firstname;
-    this.secondname = secondname;
-    this.group = group;
+    return this;
   }
 
   public String getFirstname() {
     return firstname;
   }
 
-  public String getLastname() {
-    return secondname;
+
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
   }
+
+  public String getLastname() {
+    return lastname;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
+  }
+
+
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
+  }
+
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+
+
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public String getHomePhone() {
+    return homePhone;
+  }
+
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+
 
   public String getGroup() {
     return group;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData contactData = (ContactData) o;
+
+    if (id != contactData.id) return false;
+    return firstname != null ?firstname.equals(contactData.firstname) : contactData.firstname == null;
   }
 }
