@@ -3,17 +3,20 @@ package stqa.pft.addressbook.tests;
 import org.testng.annotations.Test;
 import stqa.pft.addressbook.model.ContactData;
 
-/**
- * Created by prohorova on 10.07.2018.
- */
+import java.io.File;
+
+
 public class ContactCreationTests extends TestBase {
 
-  @Test(enabled = false)
+  @Test
   public void testContactCreation(){
     app.goTo().gotoHomePage();
     app.contact().initContactCreation();
-    app.contact().fillContactForm(new ContactData(), true);
+    File photo = new File("src/test/resources/Vika.jpg");
+    app.contact().fillContactForm(new ContactData().withFirstname("test_name").withLastname("test_surname").withPhoto(photo), true);
     app.contact().submitContactCreation();
     app.contact().returnToHomePage();
   }
+
+
 }
